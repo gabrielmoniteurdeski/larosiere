@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Un aperçu du quotidien de Gabriel, moniteur de ski ESF à La Rosière : les cours, les élèves et la vie sur les pistes."
+    />
+    <meta name="theme-color" content="#c92338" />
+    <title>Mon quotidien — Gabriel, moniteur de ski à La Rosière</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --red: #c92338;
+        --red-dark: #a91d30;
+        --ink: #25282c;
+        --muted: #70767c;
+        --paper: #fbfaf8;
+        --white: #fff;
+        --line: #e9e6e2;
+        --sans: "Poppins", sans-serif;
+        --serif: "Poppins", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      a:focus-visible {
+        outline: 3px solid var(--red);
+        outline-offset: 4px;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 56px));
+        margin-inline: auto;
+      }
+
+      .site-header {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--line);
+      }
+
+      .navigation {
+        display: flex;
+        width: min(1120px, calc(100% - 56px));
+        min-height: 82px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+        margin-inline: auto;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: block;
+        width: 102px;
+        height: 32px;
+        flex: 0 0 auto;
+      }
+
+      .brand-mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .brand-copy {
+        display: grid;
+        gap: 3px;
+      }
+
+      .brand-title {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 14px;
+        letter-spacing: -0.02em;
+      }
+
+      .language-flags {
+        display: inline-flex;
+        flex: 0 0 auto;
+        gap: 3px;
+        font-family: var(--sans);
+        font-size: 13px;
+        letter-spacing: 0;
+        line-height: 1;
+      }
+
+      .brand-copy span {
+        color: var(--muted);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .button {
+        display: inline-flex;
+        height: 48px;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 0 20px;
+        border: 1px solid var(--red);
+        border-radius: 3px;
+        background: var(--red);
+        color: var(--white);
+        font-size: 12px;
+        font-weight: 750;
+        text-decoration: none;
+        transition:
+          background 160ms ease,
+          border-color 160ms ease,
+          transform 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        border-color: var(--red-dark);
+        background: var(--red-dark);
+      }
+
+      .header-button {
+        width: 112px;
+        height: 48px;
+        min-height: 48px;
+        padding-inline: 8px;
+        font-size: 12px;
+      }
+
+      main {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        padding-block: clamp(12px, 2vh, 24px);
+      }
+
+      .page-intro {
+        max-width: 650px;
+        margin: 0 auto clamp(12px, 2vh, 20px);
+        text-align: center;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--red);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 8px;
+        font-family: var(--sans);
+        font-size: clamp(32px, 4vw, 48px);
+        letter-spacing: -0.04em;
+        line-height: 1.15;
+      }
+
+      h1 span {
+        color: var(--red);
+      }
+
+      .intro {
+        max-width: 520px;
+        margin: 0 auto;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .gallery {
+        position: relative;
+        max-width: 900px;
+        margin-inline: auto;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        height: clamp(150px, 36vh, 360px);
+        margin: 0;
+        background: #eeeae5;
+      }
+
+      .gallery-item[hidden] {
+        display: none;
+      }
+
+      .gallery-item img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .gallery-controls[hidden] {
+        display: none;
+      }
+
+      .gallery-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 10px;
+      }
+
+      .slide-button {
+        display: grid;
+        width: 40px;
+        height: 40px;
+        min-height: 40px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        font-size: 12px;
+        line-height: 1;
+        transition:
+          border-color 160ms ease,
+          background 160ms ease,
+          color 160ms ease;
+      }
+
+      .slide-button:hover {
+        border-color: var(--red);
+        background: var(--red);
+        color: var(--white);
+      }
+
+      .slide-count {
+        min-width: 44px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .keyboard-hint {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 11px;
+        text-align: center;
+      }
+
+      .page-end {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 16px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        gap: 10px;
+        padding: 0 19px;
+        border: 1px solid var(--red);
+        border-radius: 3px;
+        color: var(--red);
+        font-size: 12px;
+        font-weight: 750;
+        text-decoration: none;
+        transition:
+          background 160ms ease,
+          color 160ms ease;
+      }
+
+      .back-link:hover {
+        background: var(--red);
+        color: var(--white);
+      }
+
+      .footer-inner {
+        display: flex;
+        height: 82px;
+        min-height: 82px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        color: var(--muted);
+        font-size: 10px;
+      }
+
+      .footer-inner p {
+        margin: 0;
+      }
+
+      @media (max-width: 700px) {
+        .shell {
+          width: min(100% - 36px, 560px);
+        }
+
+        .navigation {
+          width: min(100% - 36px, 560px);
+          flex-wrap: wrap;
+          padding-block: 12px;
+        }
+
+        .brand-mark {
+          width: 84px;
+          height: 26px;
+        }
+
+        .header-actions {
+          width: 100%;
+          gap: 7px;
+        }
+
+        .header-button {
+          width: auto;
+          height: 48px;
+          min-height: 48px;
+          flex: 1;
+          min-width: 0;
+          padding-inline: 8px;
+          font-size: 12px;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .navigation {
+          min-height: 70px;
+        }
+
+        .brand-title {
+          gap: 5px;
+          font-size: 12px;
+        }
+
+        .language-flags {
+          font-size: 12px;
+        }
+
+        .page-intro {
+          margin-bottom: 12px;
+        }
+
+        .gallery-item {
+          height: clamp(150px, 32vh, 300px);
+        }
+
+      }
+
+      @media (max-height: 760px) {
+        main {
+          padding-block: 8px;
+        }
+
+        .page-intro {
+          margin-bottom: 10px;
+        }
+
+        .eyebrow {
+          margin-bottom: 6px;
+        }
+
+        h1 {
+          font-size: clamp(26px, 4vw, 38px);
+        }
+
+        .intro {
+          font-size: 12px;
+          line-height: 1.45;
+        }
+
+        .gallery-item {
+          height: clamp(140px, 24vh, 220px);
+        }
+
+        .page-end {
+          margin-top: 10px;
+        }
+      }
+
+      @media (max-height: 620px) {
+        .navigation {
+          padding-block: 6px;
+        }
+
+        .gallery-item {
+          height: 120px;
+        }
+
+        .footer-inner {
+          height: 64px;
+          min-height: 64px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="navigation shell">
+        <a class="brand" href="index.html" aria-label="Accueil — Gabriel, moniteur de ski">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="images/esf-logo.png" alt="" />
+          </span>
+          <span class="brand-copy">
+            <strong class="brand-title">
+              Gabriel · Moniteur de ski
+              <span class="language-flags" aria-label="Langues : anglais et français">
+                <span role="img" aria-label="Anglais">🇬🇧</span>
+                <span role="img" aria-label="Français">🇫🇷</span>
+              </span>
+            </strong>
+          </span>
+        </a>
+        <nav class="header-actions" aria-label="Navigation principale">
+          <a class="button header-button" href="index.html">ACCUEIL</a>
+          <a class="button header-button" href="albums.html">PHOTOS</a>
+          <a class="button header-button" href="a-propos.html">A PROPOS</a>
+          <a class="button header-button" href="contact.html">CONTACT</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <header class="page-intro">
+        <p class="eyebrow">Pour tous les niveaux</p>
+        <h1>Un aperçu de <span>mon quotidien</span></h1>
+        <p class="intro">
+          Des premières glisses jusqu'au niveau expert, découvrez quelques images de mon quotidien
+          sur les pistes de La Rosière.
+        </p>
+      </header>
+
+      <section
+        class="gallery"
+        id="daily-slideshow"
+        aria-label="Diaporama de moments sur les pistes"
+        aria-roledescription="diaporama"
+        tabindex="0"
+      >
+        <figure class="gallery-item" aria-label="Photo 1 sur 3">
+          <img
+            src="images/Diaporama%20Quotidien/IMG_1871.jpg"
+            alt="Gabriel et ses élèves réunis sur les pistes enneigées de La Rosière"
+          />
+        </figure>
+        <figure class="gallery-item" aria-label="Photo 2 sur 3" hidden>
+          <img
+            src="images/Diaporama%20Quotidien/IMG_1284.jpg"
+            alt="Un groupe de jeunes skieurs avec leur moniteur face aux sommets"
+          />
+        </figure>
+        <figure class="gallery-item" aria-label="Photo 3 sur 3" hidden>
+          <img
+            src="images/Diaporama%20Quotidien/IMG_2049.jpg"
+            alt="L’équipe de moniteurs ESF réunie sur la neige"
+          />
+        </figure>
+        <div class="gallery-controls" hidden>
+          <button class="slide-button" type="button" data-direction="-1" aria-label="Photo précédente">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <span class="slide-count" aria-live="polite">1 / 3</span>
+          <button class="slide-button" type="button" data-direction="1" aria-label="Photo suivante">
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+      </section>
+      
+
+      <div class="page-end">
+        <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Retour à l’accueil</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner shell">
+        <p>La Rosière</p>
+        <p>© Tous droits réservés</p>
+      </div>
+    </footer>
+    <script>
+      const slideshow = document.querySelector("#daily-slideshow");
+
+      if (slideshow) {
+        const slides = Array.from(slideshow.querySelectorAll(".gallery-item"));
+        const controls = slideshow.querySelector(".gallery-controls");
+        const counter = slideshow.querySelector(".slide-count");
+        let currentSlide = 0;
+
+        const showSlide = (index) => {
+          currentSlide = (index + slides.length) % slides.length;
+          slides.forEach((slide, slideIndex) => {
+            slide.hidden = slideIndex !== currentSlide;
+          });
+          counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+          slides[currentSlide].setAttribute(
+            "aria-label",
+            `Photo ${currentSlide + 1} sur ${slides.length}`,
+          );
+        };
+
+        controls.hidden = false;
+        controls.addEventListener("click", (event) => {
+          const button = event.target.closest("[data-direction]");
+          if (button) {
+            showSlide(currentSlide + Number(button.dataset.direction));
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+            const target = event.target;
+            const isEditing =
+              target instanceof HTMLElement &&
+              (target.isContentEditable ||
+                target instanceof HTMLInputElement ||
+                target instanceof HTMLTextAreaElement ||
+                target instanceof HTMLSelectElement);
+            const galleryBounds = slideshow.getBoundingClientRect();
+            const galleryIsVisible =
+              galleryBounds.bottom > 0 && galleryBounds.top < window.innerHeight;
+
+            if (isEditing || !galleryIsVisible || event.altKey || event.ctrlKey || event.metaKey) {
+              return;
+            }
+
+            event.preventDefault();
+            showSlide(currentSlide + (event.key === "ArrowRight" ? 1 : -1));
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

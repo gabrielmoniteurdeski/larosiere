@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Retrouvez les albums photos des cours de ski de Gabriel, classés par semaine à La Rosière."
+    />
+    <meta name="theme-color" content="#c92338" />
+    <title>Albums photos — Gabriel, moniteur de ski à La Rosière</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --red: #c92338;
+        --red-dark: #a91d30;
+        --ink: #25282c;
+        --muted: #70767c;
+        --paper: #fbfaf8;
+        --white: #fff;
+        --line: #e9e6e2;
+        --sans: "Poppins", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        min-height: 100vh;
+        min-height: 100svh;
+        flex-direction: column;
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--red);
+        outline-offset: 4px;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 56px));
+        margin-inline: auto;
+      }
+
+      .site-header {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--line);
+      }
+
+      .navigation {
+        display: flex;
+        width: min(1120px, calc(100% - 56px));
+        min-height: 82px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+        margin-inline: auto;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: block;
+        width: 102px;
+        height: 32px;
+        flex: 0 0 auto;
+      }
+
+      .brand-mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .brand-title {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 14px;
+        letter-spacing: -0.02em;
+      }
+
+      .language-flags {
+        display: inline-flex;
+        flex: 0 0 auto;
+        gap: 3px;
+        font-size: 13px;
+        letter-spacing: 0;
+        line-height: 1;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        border: 1px solid var(--red);
+        border-radius: 3px;
+        background: var(--red);
+        color: var(--white);
+        font-size: 12px;
+        font-weight: 750;
+        text-decoration: none;
+        transition:
+          background 160ms ease,
+          border-color 160ms ease,
+          transform 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        border-color: var(--red-dark);
+        background: var(--red-dark);
+      }
+
+      .header-button {
+        width: 112px;
+        height: 48px;
+        padding-inline: 8px;
+        font-size: 12px;
+      }
+
+      main {
+        flex: 1;
+        padding-block: 48px 56px;
+      }
+
+      .page-intro {
+        max-width: 650px;
+        margin: 0 auto 32px;
+        text-align: center;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--red);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+        font-size: clamp(32px, 4vw, 48px);
+        letter-spacing: -0.04em;
+        line-height: 1.15;
+      }
+
+      h1 span {
+        color: var(--red);
+      }
+
+      .intro {
+        max-width: 520px;
+        margin: 0 auto;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .album-grid {
+        display: grid;
+        max-width: 760px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-inline: auto;
+      }
+
+      .album-button {
+        display: flex;
+        aspect-ratio: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--white);
+        color: var(--ink);
+        font: inherit;
+        text-align: center;
+      }
+
+      .album-button strong {
+        color: var(--red);
+        font-size: clamp(14px, 2.3vw, 20px);
+        font-weight: 700;
+      }
+
+      .album-button span {
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .album-button .album-date {
+        display: grid;
+        justify-items: center;
+        gap: 4px;
+      }
+
+      .album-button .album-date-range {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: clamp(17px, 2.6vw, 22px);
+      }
+
+      .album-button .album-date-range span {
+        color: var(--red);
+        font-size: inherit;
+      }
+
+      .album-button .album-date-arrow {
+        font-size: 16px;
+      }
+
+      .page-end {
+        margin-top: 28px;
+        text-align: center;
+      }
+
+      .back-link {
+        color: var(--muted);
+        font-size: 12px;
+        text-decoration: none;
+      }
+
+      .back-link:hover {
+        color: var(--red);
+      }
+
+      .footer-inner {
+        display: flex;
+        min-height: 82px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        color: var(--muted);
+        font-size: 10px;
+      }
+
+      .footer-inner p {
+        margin: 0;
+      }
+
+      @media (max-width: 700px) {
+        .shell,
+        .navigation {
+          width: min(100% - 36px, 560px);
+        }
+
+        .navigation {
+          flex-wrap: wrap;
+          padding-block: 12px;
+        }
+
+        .brand-mark {
+          width: 84px;
+          height: 26px;
+        }
+
+        .header-actions {
+          width: 100%;
+          gap: 7px;
+        }
+
+        .header-button {
+          width: auto;
+          flex: 1;
+          min-width: 0;
+          padding-inline: 8px;
+        }
+
+        main {
+          padding-block: 32px 40px;
+        }
+
+        .album-grid {
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .album-button {
+          gap: 5px;
+          padding: 8px;
+        }
+
+        .album-button .album-date-range {
+          gap: 3px;
+          font-size: 10px;
+        }
+
+        .album-button .album-date-arrow {
+          font-size: 12px;
+        }
+
+        .album-button span {
+          font-size: 9px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="navigation shell">
+        <a class="brand" href="index.html" aria-label="Accueil — Gabriel, moniteur de ski">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="images/esf-logo.png" alt="" />
+          </span>
+          <strong class="brand-title">
+            Gabriel · Moniteur de ski
+            <span class="language-flags" aria-label="Langues : anglais et français">
+              <span role="img" aria-label="Anglais">🇬🇧</span>
+              <span role="img" aria-label="Français">🇫🇷</span>
+            </span>
+          </strong>
+        </a>
+        <nav class="header-actions" aria-label="Navigation principale">
+          <a class="button header-button" href="index.html">ACCUEIL</a>
+          <a class="button header-button" href="albums.html" aria-current="page">PHOTOS</a>
+          <a class="button header-button" href="a-propos.html">A PROPOS</a>
+          <a class="button header-button" href="contact.html">CONTACT</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <header class="page-intro">
+        <p class="eyebrow">Les souvenirs de la saison</p>
+        <h1>Albums <span>photos</span></h1>
+        <p class="intro">
+          Choisissez votre semaine pour retrouver les photos de vos cours.
+        </p>
+      </header>
+
+      <section class="album-grid" aria-label="Albums photos classés par semaine">
+        <button class="album-button" type="button" disabled aria-label="Semaine 01 : du 13/12 au 19/12">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>13/12</span><span class="album-date-arrow" aria-hidden="true">→</span><span>19/12</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 02 : du 20/12 au 26/12">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>20/12</span><span class="album-date-arrow" aria-hidden="true">→</span><span>26/12</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 03 : du 27/12 au 02/01">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>27/12</span><span class="album-date-arrow" aria-hidden="true">→</span><span>02/01</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 04 : du 03/01 au 09/01">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>03/01</span><span class="album-date-arrow" aria-hidden="true">→</span><span>09/01</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 05 : du 10/01 au 16/01">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>10/01</span><span class="album-date-arrow" aria-hidden="true">→</span><span>16/01</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 06 : du 17/01 au 23/01">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>17/01</span><span class="album-date-arrow" aria-hidden="true">→</span><span>23/01</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 07 : du 24/01 au 30/01">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>24/01</span><span class="album-date-arrow" aria-hidden="true">→</span><span>30/01</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 08 : du 31/01 au 06/02">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>31/01</span><span class="album-date-arrow" aria-hidden="true">→</span><span>06/02</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 09 : du 07/02 au 13/02">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>07/02</span><span class="album-date-arrow" aria-hidden="true">→</span><span>13/02</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 10 : du 14/02 au 20/02">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>14/02</span><span class="album-date-arrow" aria-hidden="true">→</span><span>20/02</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 11 : du 21/02 au 27/02">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>21/02</span><span class="album-date-arrow" aria-hidden="true">→</span><span>27/02</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 12 : du 28/02 au 06/03">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>28/02</span><span class="album-date-arrow" aria-hidden="true">→</span><span>06/03</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 13 : du 07/03 au 13/03">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>07/03</span><span class="album-date-arrow" aria-hidden="true">→</span><span>13/03</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 14 : du 14/03 au 20/03">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>14/03</span><span class="album-date-arrow" aria-hidden="true">→</span><span>20/03</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 15 : du 21/03 au 27/03">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>21/03</span><span class="album-date-arrow" aria-hidden="true">→</span><span>27/03</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 16 : du 28/03 au 03/04">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>28/03</span><span class="album-date-arrow" aria-hidden="true">→</span><span>03/04</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 17 : du 04/04 au 10/04">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>04/04</span><span class="album-date-arrow" aria-hidden="true">→</span><span>10/04</span>
+            </span>
+          </strong>
+        </button>
+        <button class="album-button" type="button" disabled aria-label="Semaine 18 : du 11/04 au 17/04">
+          <strong class="album-date">
+            <span class="album-date-range">
+              <span>11/04</span><span class="album-date-arrow" aria-hidden="true">→</span><span>17/04</span>
+            </span>
+          </strong>
+        </button>
+      </section>
+
+      <div class="page-end">
+        <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Retour à l’accueil</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner shell">
+        <p>La Rosière</p>
+        <p>© Tous droits réservés</p>
+      </div>
+    </footer>
+  </body>
+</html>
